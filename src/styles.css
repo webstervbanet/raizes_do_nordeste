@@ -31,6 +31,10 @@
   --violeta_200: #77597c;
 }
 
+.error-message {
+  color: var(--app-error);
+}
+
 .spin {
   animation: spin 0.8s linear infinite;
 }

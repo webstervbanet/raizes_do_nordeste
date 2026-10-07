@@ -10,10 +10,10 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
-import { version } from '../../../../package.json';
 import { LucideCookingPot } from '@lucide/angular';
 import { InputComponent } from '../../shared/input/input';
 import { CheckboxComponent } from '../../shared/checkbox/checkbox';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cadastro',
@@ -32,88 +32,61 @@ import { CheckboxComponent } from '../../shared/checkbox/checkbox';
 })
 export class CadastroComponent {
   private authService = inject(AuthService);
-  private router = inject(Router);
   private formBuilder = inject(FormBuilder);
+  private messageService = inject(MessageService);
 
-  nome_usuario: string = '';
-  senha_usuario: string = '';
-  email_usuario: string = '';
   isLoading: boolean = false;
-  isSuccess: boolean = false;
-  showLoadingOverlay: boolean = false;
-  errorMessage: string = '';
-  successMessage: string = '';
 
   authenticate = signal<boolean>(false);
-  changePassword = signal<boolean>(false);
-
-  version = version;
-  formChangePassword: FormGroup;
+  form: FormGroup;
 
   constructor() {
-    this.formChangePassword = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(3)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(3)]],
+    this.form = this.formBuilder.group({
+      nome: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+      cep: ['', [Validators.required, Validators.minLength(3)]],
+      rua: ['', [Validators.required, Validators.minLength(3)]],
+      numero: ['', [Validators.required, Validators.minLength(3)]],
+      bairro: ['', [Validators.required, Validators.minLength(3)]],
+      cidade: ['', [Validators.required, Validators.minLength(3)]],
+      estado: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
-  onLogin(event: Event) {
-    this.errorMessage = '';
-    this.successMessage = '';
-    this.isSuccess = false;
+  onRegister(event: Event) {
+    const dados = this.form.value;
 
-    if (!this.nome_usuario || !this.senha_usuario) {
-      alert('Por favor, preencha todos os campos');
+    if (!this.form.valid) {
+      this.form.markAllAsTouched();
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Atenção!',
+        detail: 'Preencha todos os campos obrigatórios.',
+      });
       return;
     }
 
-    this.isLoading = true;
+    if (dados.password !== dados.confirmPassword) {
+      this.form.get('confirmPassword')?.setErrors({ mismatch: true });
 
-    this.authService.login(this.nome_usuario, this.senha_usuario).subscribe({
-      next: (response) => {
-        // Salvar dados do usuário se necessário
-        if (response && response.token) {
-          //Setando dados da sessão
-          this.authService.setSession(response);
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Atenção!',
+        detail: 'As senhas devem ser iguais.',
+      });
+      return;
+    }
 
-          // Mostrar efeito de sucesso
-          this.isLoading = false;
-          this.isSuccess = true;
-          this.successMessage = 'Login realizado com sucesso!';
-          this.showLoadingOverlay = true;
+    const sucesso = this.authService.register(dados);
 
-          // Aguardar um momento para mostrar o efeito de sucesso
-          // Redirecionar para a tela home
-          this.router.navigate(['/inicio']);
-        } else if (response && response.emailToken == true) {
-          this.authenticate.set(true);
-        } else {
-          // Resposta sem token - tratar como erro
-          console.warn('Login retornou sem token:', response);
-          this.errorMessage = 'Resposta de login inválida. Tente novamente.';
-          this.isLoading = false;
-        }
-      },
-      error: (error) => {
-        console.error('Login failed', error);
+    if (sucesso) {
+      this.isLoading = true;
+
+      setTimeout(() => {
         this.isLoading = false;
-        this.isSuccess = false;
-        this.showLoadingOverlay = false;
-        // Tratar diferentes tipos de erro
-        if (error.status === 401) {
-          this.errorMessage = 'Usuário ou senha incorretos.';
-        } else if (error.status === 404) {
-          this.errorMessage = 'Serviço não encontrado. Tente novamente mais tarde.';
-        } else if (error.status === 500) {
-          this.errorMessage = 'Erro interno do servidor. Tente novamente mais tarde.';
-        } else if (error.status === 0) {
-          this.errorMessage = 'Erro de conexão. Verifique sua internet.';
-        } else {
-          // Verificar se há mensagem de erro específica da API
-          const apiMessage = error.error?.message || error.error?.Message;
-          this.errorMessage = apiMessage || 'Erro no login. Verifique suas credenciais.';
-        }
-      },
-    });
+      }, 3000);
+    }
   }
 }

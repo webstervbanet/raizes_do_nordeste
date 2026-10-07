@@ -3,13 +3,8 @@
     <label
       [for]="id"
       class="d-block"
-      style="
-        color: #334155;
-        font-weight: 500;
-        font-size: 12px;
-        margin-bottom: 0px;
-        text-align: start;
-      "
+      [class.error-message]="invalid"
+      style="font-weight: 500; font-size: 12px; margin-bottom: 0px; text-align: start"
     >
       {{ label }}
       @if (required) {
@@ -34,7 +29,7 @@
   />
 
   @if (invalid && errorMessage) {
-    <small class="p-error error-message">
+    <small class="p-error error-message" style="text-align: start">
       {{ errorMessage }}
     </small>
   }

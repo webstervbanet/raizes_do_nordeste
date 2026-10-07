@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { JwtService } from './jwt.service';
+import { MessageService } from 'primeng/api';
 
 type ChangePassword = {
   userName: string;
@@ -19,6 +20,9 @@ export class AuthService {
   private router = inject(Router);
   private http = inject(HttpClient);
   private jwtService = inject(JwtService);
+
+  private messageService = inject(MessageService);
+
   authenticated = signal(false);
 
   constructor() {
@@ -45,18 +49,61 @@ export class AuthService {
     return this.http.post(this.apiUrl, loginData);
   }
 
+  register(data: any) {
+    console.log('Dados de registro:', data);
+
+    const usuarios = localStorage.getItem('usuarios')
+      ? JSON.parse(localStorage.getItem('usuarios')!)
+      : [];
+
+    if (usuarios.some((u: any) => u.email === data.email)) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Erro!',
+        detail: 'Já existe um usuário cadastrado com este email.',
+        life: 3000,
+      });
+
+      return false;
+    }
+
+    const novoUsuario = {
+      nome: data.nome,
+      email: data.email,
+      password: data.password,
+      cep: data.cep,
+      rua: data.rua,
+    };
+
+    usuarios.push(novoUsuario);
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Sucesso!',
+      detail: 'Usuário cadastrado com sucesso.',
+      life: 3000,
+    });
+
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 3000);
+
+    return true;
+  }
+
   logout() {
     this.router.navigate(['/login'], { replaceUrl: true });
     localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('pessoa');
+    localStorage.removeItem('nome');
+    localStorage.removeItem('email');
     this.authenticated.set(false);
   }
 
-  setSession(response: any) {
-    localStorage.setItem('token', response.token);
-    localStorage.setItem('username', response.usuario);
-    localStorage.setItem('pessoa', response.pessoa);
+  setSession(data: any) {
+    localStorage.setItem('token', 'dummy-token');
+    localStorage.setItem('nome', data.nome);
+    localStorage.setItem('email', data.email);
     this.authenticated.set(true);
   }
 }
