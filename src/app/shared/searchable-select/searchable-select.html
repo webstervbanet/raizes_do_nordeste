@@ -1,0 +1,35 @@
+<p-select
+  #selectRef
+  [options]="options"
+  [(ngModel)]="value"
+  [invalid]="isInvalid"
+  [loading]="loadingSelect"
+  (ngModelChange)="setValue($event)"
+  optionLabel="label"
+  [optionValue]="optionValue"
+  [filter]="true"
+  [showClear]="clearable && value !== null && value !== undefined && value !== ''"
+  [placeholder]="placeholder"
+  [disabled]="disabled"
+  class="p-dropdown"
+  [class.small-dropdown]="small"
+  [size]="size"
+  appendTo="body"
+  (onHide)="clearFilter(selectRef)"
+  (onFilter)="handleFilter($event)"
+  [emptyMessage]="emptyMessage"
+  [emptyFilterMessage]="emptyFilterMessage"
+  [virtualScroll]="virtualScroll"
+  [virtualScrollItemSize]="virtualScrollItemSize"
+>
+  <ng-template #selectedItem let-selectedOption>
+    <div>
+      <div>{{ selectedOption.label }}</div>
+    </div>
+  </ng-template>
+  <ng-template let-option #item class="p-dropdown-item">
+    <div>
+      <div>{{ option.label }}</div>
+    </div>
+  </ng-template>
+</p-select>

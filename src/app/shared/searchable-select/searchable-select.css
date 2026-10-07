@@ -1,0 +1,55 @@
+.p-dropdown {
+  background-color: #f9fafb;
+  border: 1px solid #ced4da;
+  width: 100%;
+}
+
+/* Estilo borda select */
+.p-dropdown:hover,
+.p-dropdown.p-focus {
+  /*  border-color: var(--app-dark) !important;*/
+}
+
+/* Estilo filtro de texto */
+::ng-deep .p-inputtext {
+  /*  border: 1px solid var(--app-dark) !important;*/
+}
+
+/* Estilos background opçoes */
+::ng-deep .p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus {
+  background-color: var(--app-light) !important;
+  color: var(--app-white) !important;
+}
+
+/* Cor background opção selecionada */
+::ng-deep .p-select-option.p-select-option-selected {
+  background-color: var(--app-light) !important;
+  color: var(--app-white) !important;
+}
+
+.p-dropdown.is-invalid .p-dropdown-label {
+  border: 1px solid red !important;
+  border-radius: 4px;
+}
+
+:host ::ng-deep .small-dropdown {
+  font-size: 12px; /* diminui fonte */
+  min-height: 25px; /* define altura mínima */
+  height: 25px;
+  width: 100%;
+}
+
+:host ::ng-deep .small-dropdown .p-select-label {
+  padding: 2px 6px !important; /* menos espaço interno */
+  font-size: small;
+  /* line-height: 24px; centraliza verticalmente */
+}
+
+:host ::ng-deep .small-dropdown .p-select-trigger {
+  width: 1.5rem; /* botão da seta menor */
+}
+
+:host ::ng-deep .small-dropdown .p-select {
+  min-height: 25px !important;
+  height: 25px !important;
+}

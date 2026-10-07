@@ -1,0 +1,12 @@
+:host ::ng-deep .p-checkbox .p-checkbox-box {
+  border: 1px solid var(--app-dark) !important;
+}
+
+:host ::ng-deep .p-checkbox-checked .p-checkbox-box {
+  background: black !important;
+  border-color: black;
+}
+
+:host ::ng-deep .p-checkbox.p-highlight .p-checkbox-box .p-checkbox-icon {
+  background: var(--app-dark) !important;
+}

@@ -1,0 +1,29 @@
+<p-confirmDialog
+  [visible]="showDialog"
+  [header]="title"
+  icon="pi pi-info-circle"
+  [closable]="false"
+>
+  <ng-template pTemplate="message">
+    <span style="white-space: pre-line">{{ message }}</span>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      [label]="btnConfirmLabel"
+      icon="pi pi-check"
+      [severity]="confirmSeverity"
+      [loading]="isLoading"
+      [disabled]="isLoading"
+      (click)="onClick()"
+    ></p-button>
+    <p-button
+      [label]="btnClose"
+      icon="pi pi-times"
+      severity="secondary"
+      outlined="true"
+      (click)="onCancel()"
+      [disabled]="isLoading"
+    ></p-button>
+  </ng-template>
+</p-confirmDialog>

@@ -1,0 +1,49 @@
+::ng-deep .p-dialog {
+  margin: 32px;
+}
+
+::ng-deep .p-dialog .p-dialog-header {
+  background-color: #f8f9fa;
+  padding: 16px 20px;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+}
+
+::ng-deep .p-dialog .p-dialog-content {
+  padding: 20px;
+}
+
+::ng-deep .p-dialog .p-dialog-footer {
+  background-color: #f8f9fa;
+  padding: 16px 20px;
+  border-top: 1px solid #dee2e6;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-radius: 0 0 8px 8px;
+}
+
+.footer {
+  display: flex;
+  gap: 16px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}

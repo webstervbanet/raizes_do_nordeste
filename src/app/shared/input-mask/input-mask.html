@@ -1,0 +1,40 @@
+<div class="field">
+  @if (label) {
+    <label
+      [for]="id"
+      class="d-block"
+      style="color: #334155; font-weight: 500; font-size: 12px; margin-bottom: 0"
+    >
+      {{ label }}
+
+      @if (required) {
+        <span class="required">*</span>
+      }
+    </label>
+  }
+
+  <p-inputMask
+    [inputId]="id"
+    [mask]="mask"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    [autoClear]="autoClear"
+    [unmask]="unmask"
+    [slotChar]="slotChar"
+    [class.ng-invalid]="invalid"
+    [class.ng-dirty]="invalid"
+    [size]="size"
+    [(ngModel)]="value"
+    (ngModelChange)="onInput($event)"
+    (blur)="onTouched()"
+    [style]="{ width: '100%' }"
+    [ngModelOptions]="{ standalone: true }"
+  />
+
+  @if (invalid && errorMessage) {
+    <small class="p-error error-message">
+      {{ errorMessage }}
+    </small>
+  }
+</div>

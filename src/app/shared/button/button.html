@@ -1,0 +1,19 @@
+<button
+  [class]="'button ' + class"
+  [ngClass]="[color, size]"
+  [disabled]="isDisabled || isLoading"
+  (click)="onClick()"
+  [style.width]="btnWidth + 'px'"
+>
+  @if (iconLeft && !isLoading) {
+    <i [class]="iconLeft"></i>
+  }
+  <span class="btn-text">{{ name }}</span>
+  @if (isLoading) {
+    <span>
+      <i class="pi pi-spinner spin"></i>
+    </span>
+  } @else if (icon && !isLoading) {
+    <i [class]="icon"></i>
+  }
+</button>

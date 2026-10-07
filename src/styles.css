@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'primeicons/primeicons.css';
+
+* {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+:root {
+  --app-white: white;
+  --app-bg: white;
+  --app-text: #333;
+  --app-default: #e8f5e9;
+  --app-home: #dbddd0;
+  --app-dark: #003e1f;
+  --app-dark-hover: #006b36;
+  --app-md: #0b813c;
+  --app-light: #4caf50;
+  --app-error: #fa2f21f7;
+
+  --vermelho_100: #f44336f7;
+  --vermelho_200: rgb(184, 34, 34);
+  --vermelho_300: #a12c24f7;
+  --vermelho_400: rgb(95, 25, 25);
+  --amarelo_100: #fcd100;
+  --amarelo_300: #ef9f00;
+  --amarelo_500: #aa750a;
+  --laranja_500: #f05923;
+  --violeta_100: #a47dab;
+  --violeta_200: #77597c;
+}
+
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

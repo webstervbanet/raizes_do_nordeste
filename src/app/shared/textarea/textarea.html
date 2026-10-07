@@ -1,0 +1,32 @@
+<div class="field">
+  @if (label) {
+    <label [for]="id" class="d-block" style="color: #334155">
+      {{ label }}
+      @if (required) {
+        <span class="required">*</span>
+      }
+    </label>
+  }
+
+  <textarea
+    pInputTextarea
+    [id]="id"
+    [rows]="rows"
+    [cols]="cols"
+    [autoResize]="autoResize"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [value]="value"
+    [class.ng-invalid]="invalid"
+    [class.ng-dirty]="invalid"
+    (input)="onInput($event)"
+    (blur)="onTouched()"
+    style="width: 100%"
+  ></textarea>
+
+  @if (invalid && errorMessage) {
+    <small class="p-error error-message">
+      {{ errorMessage }}
+    </small>
+  }
+</div>

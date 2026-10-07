@@ -1,0 +1,83 @@
+.button {
+  padding: 5px 10px;
+  background-color: var(--app-md);
+  border: 1px solid var(--app-dark);
+  color: var(--app-white);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: var(--app-dark);
+  transition: 0.6s;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  background-color: grey;
+  border: 1px solid gray;
+}
+
+.btn-text {
+  flex: 1;
+}
+
+.primary {
+  background-color: var(--app-md);
+  border: 1px solid var(--app-dark);
+}
+
+.secondary {
+  background-color: var(--app-white);
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.secondary:hover {
+  background-color: #e6e6e6;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.danger {
+  background-color: var(--vermelho_100);
+  border: 1px solid #ccc;
+  color: var(--app-white);
+}
+
+.danger:hover {
+  background-color: #ff1f1f;
+  border: 1px solid #ccc;
+  color: var(--app-white);
+}
+
+.button:hover:disabled {
+  background-color: grey;
+}
+
+.sm {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.lg {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.lg i {
+  font-size: 22px;
+}
+
+.ex-lg {
+  padding: 8px 14px;
+  font-size: 16px;
+}
+
+.ex-lg i {
+  font-size: 24px;
+}

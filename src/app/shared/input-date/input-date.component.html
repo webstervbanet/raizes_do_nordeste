@@ -1,0 +1,17 @@
+<p-datepicker
+  [ngModel]="value"
+  (ngModelChange)="setValue($event)"
+  [iconDisplay]="'input'"
+  [showIcon]="true"
+  [inputId]="inputId"
+  [disabled]="disabled"
+  dateFormat="dd/mm/yy"
+  placeholder="dd/mm/yyyy"
+  locale="pt"
+  [size]="size"
+  style="width: 100%"
+  [showTime]="showTime"
+  [showClear]="clearable"
+  [invalid]="invalid"
+  appendTo="body"
+/>

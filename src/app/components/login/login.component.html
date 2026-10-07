@@ -1,0 +1,75 @@
+<div class="login-container">
+  <!-- Header com logo -->
+  <header class="header">
+    <div class="logo-section">
+      <div class="logo">
+        <svg
+          lucideCookingPot
+          [size]="48"
+          color="#003e1f"
+          [strokeWidth]="2"
+          title="Raizes do Nordeste"
+        ></svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Área principal de login -->
+  <div class="login-main">
+    <div class="login-box">
+      <h1 class="login-title">Raízes do Nordeste</h1>
+      <p class="login-subtitle">Faça login para continuar</p>
+
+      <!-- Mensagem de erro -->
+      @if (errorMessage) {
+        <div class="error-message">{{ errorMessage }}</div>
+      }
+
+      <!-- Mensagem de sucesso -->
+      @if (successMessage) {
+        <div class="success-message">{{ successMessage }}</div>
+      }
+
+      <form (ngSubmit)="onLogin($event)" #loginForm="ngForm" class="login-form">
+        <app-input
+          label="Usuário"
+          type="text"
+          [(ngModel)]="nome_usuario"
+          name="username"
+          placeholder="usuario"
+        />
+
+        <app-input
+          label="Senha"
+          type="password"
+          [(ngModel)]="senha_usuario"
+          name="password"
+          placeholder="•••••••"
+        />
+
+        <button
+          type="submit"
+          class="login-btn"
+          [disabled]="isLoading || isSuccess || !loginForm.form.valid"
+          [class.loading]="isLoading"
+          [class.success]="isSuccess"
+        >
+          <span *ngIf="!isLoading && !isSuccess">Acessar</span>
+
+          <span *ngIf="isLoading && !isSuccess">
+            <span class="spinner"></span>
+            Entrando...
+          </span>
+          <span *ngIf="isSuccess">
+            <span class="success-icon"></span>
+            Sucesso!
+          </span>
+        </button>
+
+        <div>
+          <p>Não tem uma conta? <a routerLink="/register">Cadastre-se</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

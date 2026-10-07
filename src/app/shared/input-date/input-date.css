@@ -1,0 +1,9 @@
+:host {
+  width: 100%;
+}
+
+::ng-deep .p-datepicker-day-selected,
+::ng-deep .p-datepicker-month-selected,
+::ng-deep .p-datepicker-year-selected {
+  background: var(--app-dark) !important;
+}
