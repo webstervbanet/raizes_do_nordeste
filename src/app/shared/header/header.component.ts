@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   LucideCookingPot,
   LucideHandPlatter,
@@ -8,6 +8,7 @@ import {
 } from '@lucide/angular';
 import { MessageService } from 'primeng/api';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CarrinhoService } from '../../services/carrinho.service';
 
 @Component({
   selector: 'app-header',
@@ -24,4 +25,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrls: ['./header.component.css'],
   providers: [MessageService],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  carrinhoService = inject(CarrinhoService);
+}

@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LucideMapPin } from '@lucide/angular';
 import { Button } from '../../shared/button/button';
 import { FormsModule } from '@angular/forms';
 import { InputNumberComponent } from '../../shared/input-number/input-number';
+import { CarrinhoService } from '../../services/carrinho.service';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +15,15 @@ import { InputNumberComponent } from '../../shared/input-number/input-number';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  carrinhoService = inject(CarrinhoService);
+
   unidades = [
     {
       unidade: 'Unidade Teresina - PI',
       endereco: 'Rua Professor Joca Vieira, 1227 - Fátima, Teresina - PI',
       cardapio: [
         {
+          id: 1,
           nome: 'Maria-Isabel',
           descricao: 'Arroz preparado com carne de sol, cebola, alho e temperos regionais.',
           imagem:
@@ -27,6 +31,7 @@ export class HomeComponent {
           preco: 29.9,
         },
         {
+          id: 2,
           nome: 'Baião de Dois',
           descricao:
             'Arroz e feijão-de-corda preparados com queijo coalho, carne de sol e temperos.',
@@ -34,6 +39,7 @@ export class HomeComponent {
           preco: 32.9,
         },
         {
+          id: 3,
           nome: 'Carne de Sol com Macaxeira',
           descricao: 'Carne de sol grelhada acompanhada de macaxeira cozida e manteiga de garrafa.',
           imagem: 'https://jornaldafronteira.com.br/wp-content/uploads/2026/02/Heloisa-L-2.png',
@@ -41,6 +47,7 @@ export class HomeComponent {
         },
 
         {
+          id: 4,
           nome: 'Paçoca de Carne de Sol',
           descricao: 'Carne de sol desfiada e pilada com farinha de mandioca e cebola.',
           imagem:
@@ -55,12 +62,14 @@ export class HomeComponent {
       endereco: 'Av. Washington Soares, 999 - Edson Queiroz, Fortaleza - CE',
       cardapio: [
         {
+          id: 5,
           nome: 'Baião de Dois',
           descricao: 'Arroz e feijão-de-corda combinados com queijo coalho e temperos nordestinos.',
           imagem: 'https://maispinhais.com.br/wp-content/uploads/2025/05/baiao-de-dois.jpg',
           preco: 30.0,
         },
         {
+          id: 6,
           nome: 'Carne de Sol com Queijo Coalho',
           descricao: 'Carne de sol grelhada servida com queijo coalho e manteiga de garrafa.',
           imagem:
@@ -68,12 +77,14 @@ export class HomeComponent {
           preco: 42.9,
         },
         {
+          id: 7,
           nome: 'Peixada Cearense',
           descricao: 'Peixe cozido com legumes, leite de coco, ovos e temperos regionais.',
           imagem: 'https://cdn0.tudoreceitas.com/pt/posts/6/8/0/peixada_cearense_3086_1200.jpg',
           preco: 45.9,
         },
         {
+          id: 8,
           nome: 'Caranguejada',
           descricao: 'Caranguejo preparado com molho de tomate, leite de coco e temperos.',
           imagem:
@@ -81,6 +92,7 @@ export class HomeComponent {
           preco: 49.9,
         },
         {
+          id: 9,
           nome: 'Buchada de Bode',
           descricao:
             'Prato tradicional nordestino preparado com miúdos de bode e temperos regionais.',
@@ -96,12 +108,14 @@ export class HomeComponent {
       endereco: 'Av. República do Líbano, 251 - Pina, Recife - PE',
       cardapio: [
         {
+          id: 10,
           nome: 'Carne de Sol com Macaxeira',
           descricao: 'Carne de sol grelhada acompanhada de macaxeira e manteiga de garrafa.',
           imagem: 'https://jornaldafronteira.com.br/wp-content/uploads/2026/02/Heloisa-L-2.png',
           preco: 38.9,
         },
         {
+          id: 11,
           nome: 'Arrumadinho de Charque',
           descricao: 'Charque desfiada acompanhada de feijão-verde, farofa, vinagrete e macaxeira.',
           imagem:
@@ -109,6 +123,7 @@ export class HomeComponent {
           preco: 34.9,
         },
         {
+          id: 12,
           nome: 'Caldeirada Pernambucana',
           descricao:
             'Peixes e frutos do mar cozidos em caldo temperado com legumes e leite de coco.',
@@ -117,6 +132,7 @@ export class HomeComponent {
           preco: 49.9,
         },
         {
+          id: 13,
           nome: 'Sarapatel',
           descricao: 'Prato tradicional preparado com miúdos, sangue e temperos marcantes.',
           imagem:
@@ -124,6 +140,7 @@ export class HomeComponent {
           preco: 29.9,
         },
         {
+          id: 14,
           nome: 'Bolo de Rolo',
           descricao:
             'Tradicional sobremesa pernambucana feita com finas camadas de massa e goiabada.',
@@ -139,6 +156,7 @@ export class HomeComponent {
       endereco: 'Av. Tancredo Neves, 148 - Caminho das Árvores, Salvador - BA',
       cardapio: [
         {
+          id: 15,
           nome: 'Moqueca Baiana',
           descricao: 'Peixe cozido com leite de coco, azeite de dendê, tomate, cebola e pimentão.',
           imagem:
@@ -146,6 +164,7 @@ export class HomeComponent {
           preco: 49.9,
         },
         {
+          id: 16,
           nome: 'Acarajé',
           descricao:
             'Bolinho de feijão-fradinho frito no azeite de dendê, servido com vatapá e camarão.',
@@ -154,6 +173,7 @@ export class HomeComponent {
           preco: 18.9,
         },
         {
+          id: 17,
           nome: 'Vatapá',
           descricao:
             'Creme típico baiano preparado com pão, camarão, leite de coco, amendoim e dendê.',
@@ -161,12 +181,14 @@ export class HomeComponent {
           preco: 27.9,
         },
         {
+          id: 18,
           nome: 'Bobó de Camarão',
           descricao: 'Camarões preparados com creme de mandioca, leite de coco e azeite de dendê.',
           imagem: 'https://guiadacozinha.com.br/wp-content/uploads/2018/05/Bobo-de-camarao.jpg',
           preco: 46.9,
         },
         {
+          id: 19,
           nome: 'Cocada Baiana',
           descricao: 'Doce tradicional preparado com coco ralado, açúcar e leite condensado.',
           imagem: 'https://pilotandofogao.com.br/wp-content/uploads/2022/08/cocada-baiana.jpg',
@@ -186,11 +208,12 @@ export class HomeComponent {
 
   limparSelecao() {
     this.unidadeSelecionada.set(null);
+    this.carrinhoService.resetar();
   }
 
   adicionarAoCarrinho(prato: any) {
-    // Aqui você pode implementar a lógica para adicionar o prato ao carrinho
     console.log('Prato adicionado ao carrinho:', prato);
+    this.carrinhoService.adicionar(prato);
   }
 
   logout() {

@@ -12,6 +12,11 @@
         <a routerLink="/carrinho" routerLinkActive="active">
           <svg lucideShoppingCart [size]="24" [strokeWidth]="2"></svg>
           <span>Carrinho</span>
+          @if (carrinhoService.getQuantidade() > 0) {
+            <strong class="carrinho-quantidade">
+              {{ carrinhoService.getQuantidade() }}
+            </strong>
+          }
         </a>
       </li>
 

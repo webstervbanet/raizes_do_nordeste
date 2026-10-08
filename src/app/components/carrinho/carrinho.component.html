@@ -1,1 +1,14 @@
 <h1>Carrinho</h1>
+
+@if (carrinhoService.getQuantidade() > 0) {
+  <p>Quantidade de itens: {{ carrinhoService.getQuantidade() }}</p>
+  <ul>
+    @for (item of carrinhoService.getProdutos(); track item.id) {
+      <li>{{ item.nome }} - {{ item.preco * item.quantidade | currency: 'BRL' }}</li>
+    }
+  </ul>
+  <p>Total: {{ carrinhoService.getTotal() | currency: 'BRL' }}</p>
+} @else {
+  <p>O carrinho está vazio.</p>
+  <app-button routerLink="/home" name="Faça seu pedido" />
+}
