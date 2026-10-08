@@ -1,2 +1,21 @@
-<p-toast />
-<router-outlet />
+@if (isAuthenticated()) {
+  <div class="home-container">
+    <p-toast />
+
+    <!-- Header -->
+    <app-header />
+    <!-- <div class="header">
+      <p-menubar [model]="items" class="menu" />
+    </div>-->
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="content-area">
+        <!-- Conteúdo principal da aplicação será carregado aqui -->
+        <router-outlet />
+      </div>
+    </main>
+  </div>
+} @else {
+  <app-login />
+}

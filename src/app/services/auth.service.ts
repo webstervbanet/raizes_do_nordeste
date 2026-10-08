@@ -31,7 +31,7 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     const token = this.getAuthToken();
-    return !!token && !this.jwtService.isTokenExpired(token);
+    return !!token;
   }
 
   getAuthToken() {
@@ -39,14 +39,36 @@ export class AuthService {
     return token;
   }
 
-  login(userName: string, password: string, language: string = 'pt-BR'): Observable<any> {
-    const loginData = {
-      userName,
-      password,
-      language,
-    };
+  login(data: { email: string; password: string }) {
+    const usuarios = this.getUsuarios();
+    const usuario = usuarios.find(
+      (u: any) => u.email === data.email && u.password === data.password,
+    );
 
-    return this.http.post(this.apiUrl, loginData);
+    if (usuario) {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Sucesso!',
+        detail: 'Login realizado com sucesso. Redirecionando...',
+        life: 3000,
+      });
+
+      setTimeout(() => {
+        this.setSession(usuario);
+        this.router.navigate(['/home']);
+      }, 3000);
+
+      return true;
+    }
+
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Erro!',
+      detail: 'Usuário ou senha inválidos.',
+      life: 3000,
+    });
+
+    return false;
   }
 
   register(data: any) {
@@ -105,5 +127,10 @@ export class AuthService {
     localStorage.setItem('nome', data.nome);
     localStorage.setItem('email', data.email);
     this.authenticated.set(true);
+  }
+
+  getUsuarios(): any[] {
+    const usuarios = localStorage.getItem('usuarios');
+    return usuarios ? JSON.parse(usuarios) : [];
   }
 }

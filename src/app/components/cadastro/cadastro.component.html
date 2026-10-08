@@ -56,7 +56,7 @@
           placeholder="•••••••"
           formControlName="confirmPassword"
           [invalid]="form.get('confirmPassword')?.invalid && form.get('confirmPassword')?.touched"
-          [errorMessage]="'As senhas não coincidem.'"
+          [errorMessage]="'A senha deve ter pelo menos 6 caracteres.'"
         />
 
         <div class="container-endereco">

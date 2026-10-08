@@ -1,0 +1,44 @@
+<div>
+  @if (!unidadeSelecionada()) {
+    <h2>Selecione a unidade para realizar o pedido</h2>
+
+    @for (item of unidades; track $index) {
+      <div class="unidade-card" (click)="selecionarUnidade(item)">
+        <h3>{{ item.unidade }}</h3>
+        <div class="unidade-infos">
+          <svg lucideMapPin [size]="16" color="#003e1f" [strokeWidth]="2" title="pin"></svg>
+          <p>{{ item.endereco }}</p>
+        </div>
+      </div>
+    }
+  } @else {
+    <div class="voltar-unidade">
+      <app-button (clicked)="limparSelecao()" name="Alterar Unidade" iconLeft="pi pi-arrow-left" />
+    </div>
+
+    <h2 class="cardapio-title">Cardápio {{ unidadeSelecionada().unidade }}</h2>
+
+    @for (item of unidadeSelecionada().cardapio; track $index) {
+      <div class="prato-card">
+        <img class="prato-imagem" [src]="item.imagem" [alt]="item.nome" />
+        <h4>{{ item.nome }}</h4>
+        <p>{{ item.descricao }}</p>
+        <strong>R$ {{ item.preco | number: '1.2-2' }}</strong>
+        <div class="quantidade-container">
+          <app-input-number
+            type="number"
+            id="quantidade"
+            [min]="1"
+            [(ngModel)]="item.quantidade"
+            (ngModelChange)="item.quantidade = $event"
+          />
+          <app-button
+            (clicked)="adicionarAoCarrinho(item)"
+            name="Adicionar"
+            iconLeft="pi pi-shopping-cart"
+          />
+        </div>
+      </div>
+    }
+  }
+</div>

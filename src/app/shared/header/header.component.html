@@ -1,0 +1,33 @@
+<header class="header">
+  <nav>
+    <ul class="menu">
+      <li title="Cardápio">
+        <a routerLink="/home" routerLinkActive="active">
+          <svg lucideHandPlatter [size]="24" [strokeWidth]="2"></svg>
+          <span>Cardápio</span>
+        </a>
+      </li>
+
+      <li title="Carrinho">
+        <a routerLink="/carrinho" routerLinkActive="active">
+          <svg lucideShoppingCart [size]="24" [strokeWidth]="2"></svg>
+          <span>Carrinho</span>
+        </a>
+      </li>
+
+      <li title="Pedidos">
+        <a routerLink="/pedidos" routerLinkActive="active">
+          <svg lucideListTodo [size]="24" [strokeWidth]="2"></svg>
+          <span>Pedidos</span>
+        </a>
+      </li>
+
+      <li title="Perfil">
+        <a routerLink="/perfil" routerLinkActive="active">
+          <svg lucideUser [size]="24" [strokeWidth]="2"></svg>
+          <span>Perfil</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,68 @@
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header {
+  background-color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0px;
+}
+
+.menu li {
+  border-radius: 8px;
+  background-color: rgb(245, 243, 243);
+  transition: background-color 0.3s;
+}
+
+.menu li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #003e1f;
+  text-decoration: none;
+  border-radius: 8px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.menu li:hover,
+.menu li a:hover {
+  background-color: var(--app-dark);
+  color: white;
+}
+
+.menu li a svg {
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.menu li a.active {
+  background-color: var(--app-dark);
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .menu li a span {
+    display: none;
+  }
+}
