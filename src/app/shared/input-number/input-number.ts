@@ -35,6 +35,9 @@ export class InputNumberComponent implements ControlValueAccessor {
 
   @Input() label = '';
   @Input() required = false;
+  @Input() showButtons = false;
+  @Input() buttonLayout: 'vertical' | 'horizontal' = 'horizontal';
+
   @Input() invalid: boolean | null | undefined = null;
   @Input() errorMessage = '';
   @Input() size: 'large' | 'small' = 'small';

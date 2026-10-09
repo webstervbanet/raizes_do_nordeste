@@ -16,6 +16,7 @@ import { CarrinhoService } from '../../services/carrinho.service';
 })
 export class HomeComponent {
   carrinhoService = inject(CarrinhoService);
+  router = inject(Router);
 
   unidades = [
     {
@@ -29,6 +30,7 @@ export class HomeComponent {
           imagem:
             'https://www.comidaereceitas.com.br/wp-content/uploads/2010/03/Arroz_maria_isabela.jpg',
           preco: 29.9,
+          quantidade: 1,
         },
         {
           id: 2,
@@ -37,6 +39,7 @@ export class HomeComponent {
             'Arroz e feijão-de-corda preparados com queijo coalho, carne de sol e temperos.',
           imagem: 'https://maispinhais.com.br/wp-content/uploads/2025/05/baiao-de-dois.jpg',
           preco: 32.9,
+          quantidade: 1,
         },
         {
           id: 3,
@@ -44,8 +47,8 @@ export class HomeComponent {
           descricao: 'Carne de sol grelhada acompanhada de macaxeira cozida e manteiga de garrafa.',
           imagem: 'https://jornaldafronteira.com.br/wp-content/uploads/2026/02/Heloisa-L-2.png',
           preco: 39.9,
+          quantidade: 1,
         },
-
         {
           id: 4,
           nome: 'Paçoca de Carne de Sol',
@@ -53,10 +56,10 @@ export class HomeComponent {
           imagem:
             'https://static.itdg.com.br/images/640-400/71c5615d27b8f7cd8df81bc21c472ac8/pacoca-de-carne-de-sol.jpg',
           preco: 27.9,
+          quantidade: 1,
         },
       ],
     },
-
     {
       unidade: 'Unidade Fortaleza - CE',
       endereco: 'Av. Washington Soares, 999 - Edson Queiroz, Fortaleza - CE',
@@ -66,7 +69,8 @@ export class HomeComponent {
           nome: 'Baião de Dois',
           descricao: 'Arroz e feijão-de-corda combinados com queijo coalho e temperos nordestinos.',
           imagem: 'https://maispinhais.com.br/wp-content/uploads/2025/05/baiao-de-dois.jpg',
-          preco: 30.0,
+          preco: 30,
+          quantidade: 1,
         },
         {
           id: 6,
@@ -75,6 +79,7 @@ export class HomeComponent {
           imagem:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0f88eq1XZywjxGz3ku7eY3zIkL_VrPgXt4YlRCmtNtNpuA4jsBFtr4R0&s=10',
           preco: 42.9,
+          quantidade: 1,
         },
         {
           id: 7,
@@ -82,6 +87,7 @@ export class HomeComponent {
           descricao: 'Peixe cozido com legumes, leite de coco, ovos e temperos regionais.',
           imagem: 'https://cdn0.tudoreceitas.com/pt/posts/6/8/0/peixada_cearense_3086_1200.jpg',
           preco: 45.9,
+          quantidade: 1,
         },
         {
           id: 8,
@@ -90,6 +96,7 @@ export class HomeComponent {
           imagem:
             'https://cdn.casaeculinaria.com/wp-content/uploads/2024/02/20115015/Caranguejada.webp',
           preco: 49.9,
+          quantidade: 1,
         },
         {
           id: 9,
@@ -99,10 +106,10 @@ export class HomeComponent {
           imagem:
             'https://www.sabornamesa.com.br/media/k2/items/cache/973d452191c64a038927e95436dac7d2_XL.jpg',
           preco: 39.9,
+          quantidade: 1,
         },
       ],
     },
-
     {
       unidade: 'Unidade Recife - PE',
       endereco: 'Av. República do Líbano, 251 - Pina, Recife - PE',
@@ -113,6 +120,7 @@ export class HomeComponent {
           descricao: 'Carne de sol grelhada acompanhada de macaxeira e manteiga de garrafa.',
           imagem: 'https://jornaldafronteira.com.br/wp-content/uploads/2026/02/Heloisa-L-2.png',
           preco: 38.9,
+          quantidade: 1,
         },
         {
           id: 11,
@@ -121,6 +129,7 @@ export class HomeComponent {
           imagem:
             'https://receitadaboa.com.br/wp-content/uploads/2026/06/ChatGPT-Image-25-de-jun.-de-2026-10_56_27-1-1200x660.jpg',
           preco: 34.9,
+          quantidade: 1,
         },
         {
           id: 12,
@@ -130,6 +139,7 @@ export class HomeComponent {
           imagem:
             'https://umapitanganacozinha.wordpress.com/wp-content/uploads/2012/04/caldeirada_00.jpg',
           preco: 49.9,
+          quantidade: 1,
         },
         {
           id: 13,
@@ -138,6 +148,7 @@ export class HomeComponent {
           imagem:
             'https://cdn0.tudoreceitas.com/pt/posts/5/8/7/sarapatel_nordestino_tradicional_1785_orig.jpg',
           preco: 29.9,
+          quantidade: 1,
         },
         {
           id: 14,
@@ -147,10 +158,10 @@ export class HomeComponent {
           imagem:
             'https://www.receitasnestle.com.br/sites/default/files/srh_recipes/d5c3b12263781084d3e84b11c2d33027.jpg',
           preco: 15.9,
+          quantidade: 1,
         },
       ],
     },
-
     {
       unidade: 'Unidade Salvador - BA',
       endereco: 'Av. Tancredo Neves, 148 - Caminho das Árvores, Salvador - BA',
@@ -162,6 +173,7 @@ export class HomeComponent {
           imagem:
             'https://i0.wp.com/www.leiliane.com.br/wp-content/uploads/2017/08/moqueca_baiana_1.jpg?ssl=1',
           preco: 49.9,
+          quantidade: 1,
         },
         {
           id: 16,
@@ -171,6 +183,7 @@ export class HomeComponent {
           imagem:
             'https://acozinhabrasileira.com.br/wp-content/uploads/2021/09/receita-de-acaraje.jpg',
           preco: 18.9,
+          quantidade: 1,
         },
         {
           id: 17,
@@ -179,6 +192,7 @@ export class HomeComponent {
             'Creme típico baiano preparado com pão, camarão, leite de coco, amendoim e dendê.',
           imagem: 'https://www.receiteria.com.br/wp-content/uploads/vatapa-de-frango-1.jpg',
           preco: 27.9,
+          quantidade: 1,
         },
         {
           id: 18,
@@ -186,6 +200,7 @@ export class HomeComponent {
           descricao: 'Camarões preparados com creme de mandioca, leite de coco e azeite de dendê.',
           imagem: 'https://guiadacozinha.com.br/wp-content/uploads/2018/05/Bobo-de-camarao.jpg',
           preco: 46.9,
+          quantidade: 1,
         },
         {
           id: 19,
@@ -193,21 +208,28 @@ export class HomeComponent {
           descricao: 'Doce tradicional preparado com coco ralado, açúcar e leite condensado.',
           imagem: 'https://pilotandofogao.com.br/wp-content/uploads/2022/08/cocada-baiana.jpg',
           preco: 12.9,
+          quantidade: 1,
         },
       ],
     },
   ];
 
-  unidadeSelecionada: any = signal(null);
-
-  constructor(private router: Router) {}
+  unidadeSelecionada = signal<any>(this.carregarUnidade());
 
   selecionarUnidade(unidade: any) {
     this.unidadeSelecionada.set(unidade);
+    localStorage.setItem('unidadeSelecionada', JSON.stringify(unidade));
+  }
+
+  carregarUnidade() {
+    const unidadeSalva = localStorage.getItem('unidadeSelecionada');
+
+    return unidadeSalva ? JSON.parse(unidadeSalva) : null;
   }
 
   limparSelecao() {
     this.unidadeSelecionada.set(null);
+    localStorage.removeItem('unidadeSelecionada');
     this.carrinhoService.resetar();
   }
 
@@ -218,6 +240,7 @@ export class HomeComponent {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('unidadeSelecionada');
     this.router.navigate(['/login']);
   }
 }

@@ -31,6 +31,7 @@
             [min]="1"
             [(ngModel)]="item.quantidade"
             (ngModelChange)="item.quantidade = $event"
+            [showButtons]="true"
           />
           <app-button
             (clicked)="adicionarAoCarrinho(item)"

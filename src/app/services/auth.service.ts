@@ -119,6 +119,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('nome');
     localStorage.removeItem('email');
+    localStorage.removeItem('unidadeSelecionada');
     this.authenticated.set(false);
   }
 

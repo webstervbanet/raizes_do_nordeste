@@ -4,11 +4,13 @@ import {
   LucideHandPlatter,
   LucideListTodo,
   LucideShoppingCart,
+  LucideSquareArrowRightExit,
   LucideUser,
 } from '@lucide/angular';
 import { MessageService } from 'primeng/api';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CarrinhoService } from '../../services/carrinho.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +20,7 @@ import { CarrinhoService } from '../../services/carrinho.service';
     LucideShoppingCart,
     LucideUser,
     LucideListTodo,
+    LucideSquareArrowRightExit,
     RouterLink,
     RouterLinkActive,
   ],
@@ -27,4 +30,9 @@ import { CarrinhoService } from '../../services/carrinho.service';
 })
 export class HeaderComponent {
   carrinhoService = inject(CarrinhoService);
+  authService = inject(AuthService);
+
+  sair() {
+    this.authService.logout();
+  }
 }
