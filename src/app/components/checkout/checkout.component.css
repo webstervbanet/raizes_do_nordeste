@@ -1,0 +1,73 @@
+.card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.imagem {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card h4 {
+  margin: 0 0 10px 0;
+  color: var(--app-dark);
+  font-family: 'Corinthia', cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 32px;
+  text-align: center;
+}
+
+.card p {
+  margin: 0;
+  color: var(--app-text);
+}
+
+.card:hover {
+  background-color: var(--app-default);
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.acompanhamento-pedido {
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.status-pedido {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.status-pedido strong {
+  color: #16a34a;
+}
+
+small {
+  color: rgb(131, 127, 127);
+}
+
+small strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+:host ::ng-deep .btn {
+  width: 100% !important;
+  padding: 0px;
+}

@@ -1,0 +1,103 @@
+@if (!pagamento()) {
+  <div class="card">
+    <h4>Resumo do Pedido</h4>
+    <div>Taxa de Entrega: Grátis</div>
+    <div>
+      SubTotal: <strong>{{ carrinhoService.getTotal() | currency: 'BRL' }}</strong>
+    </div>
+    <app-button
+      name="Ir para Pagamento"
+      (clicked)="selecionarPagamento()"
+      iconLeft="pi pi-credit-card"
+      class="btn mt-2"
+      size="lg"
+    />
+  </div>
+} @else if (pagamento() && !processandoPedido()) {
+  <div class="card">
+    <h4>Checkout</h4>
+    <form [formGroup]="form" class="form">
+      <app-input
+        label="Nome"
+        type="text"
+        name="nome"
+        placeholder="Nome impresso no cartão"
+        formControlName="nome"
+        minlength="3"
+        [required]="true"
+        [errorMessage]="'Mínimo 3 caracteres.'"
+        [invalid]="form.get('nome')?.invalid && form.get('nome')?.touched"
+      />
+
+      <app-input-mask
+        label="Número"
+        mask="9999 9999 9999 9999"
+        placeholder="9999 9999 9999 9999"
+        [required]="true"
+        formControlName="numero"
+        [invalid]="!!form.get('numero')?.invalid && !!form.get('numero')?.touched"
+        errorMessage="Campo obrigatório"
+      />
+
+      <app-input-mask
+        label="Validade"
+        mask="99/99"
+        placeholder="12/12"
+        [required]="true"
+        formControlName="validade"
+        [invalid]="!!form.get('validade')?.invalid && !!form.get('validade')?.touched"
+        errorMessage="Campo obrigatório"
+      />
+
+      <app-input-mask
+        label="CVV"
+        mask="999"
+        placeholder="999"
+        [required]="true"
+        formControlName="cvv"
+        [invalid]="!!form.get('cvv')?.invalid && !!form.get('cvv')?.touched"
+        errorMessage="Campo obrigatório"
+      />
+
+      <div>
+        Total: <strong>{{ carrinhoService.getTotal() | currency: 'BRL' }}</strong>
+      </div>
+
+      <app-button
+        [name]="isLoading() ? 'Processando Pagamento...' : 'Concluir Pagamento'"
+        (clicked)="concluirPagamento()"
+        iconLeft="pi pi-check"
+        class="btn mt-2"
+        [isLoading]="isLoading()"
+        [isDisabled]="isLoading()"
+        size="lg"
+      />
+
+      <small>
+        <strong>
+          <svg lucideLock [size]="16" [strokeWidth]="2"></svg>
+          Ambiente 100% seguro.
+        </strong>
+
+        Seus dados bancários estão protegidos por criptografia de ponta a ponta.
+        <br />
+        <strong>
+          <svg lucideShieldKeyhole [size]="16" [strokeWidth]="2"></svg>
+          Pagamento seguro.
+        </strong>
+        Seus dados de cartão não ficam salvos em nosso sistema.
+      </small>
+    </form>
+  </div>
+} @else {
+  <div class="card acompanhamento-pedido">
+    <h4>Acompanhe seu pedido</h4>
+    <p class="mb-3 text-center">
+      {{ mensagemPedido }}
+    </p>
+    <p-progressBar [value]="value" [showValue]="true" class="mb-3" />
+    <p class="status-pedido">
+      Status: <strong>{{ statusPedido }}</strong>
+    </p>
+  </div>
+}

@@ -23,7 +23,13 @@
     }
   </ul>
   <p>Total: {{ carrinhoService.getTotal() | currency: 'BRL' }}</p>
-  <app-button name="Finalizar Pedido" iconLeft="pi pi-check" class="btn" />
+  <app-button
+    name="Finalizar Pedido"
+    routerLink="/checkout"
+    iconLeft="pi pi-check"
+    class="btn"
+    size="lg"
+  />
 } @else {
   <p>O carrinho está vazio.</p>
   <app-button routerLink="/home" name="Faça seu pedido" />

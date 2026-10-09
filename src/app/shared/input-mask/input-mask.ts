@@ -30,7 +30,7 @@ export class InputMaskComponent implements ControlValueAccessor {
   @Input() invalid = false;
   @Input() errorMessage = '';
 
-  @Input() size: 'small' | 'large' = 'small';
+  @Input() size: 'small' | 'large' = 'large';
 
   @Input() autoClear = true;
   @Input() unmask = false;

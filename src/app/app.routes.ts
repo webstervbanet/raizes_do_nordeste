@@ -7,6 +7,8 @@ import { loginGuard } from './guards/login-guard';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PedidosComponent } from './components/pedidos/perfil.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { checkoutGuard } from './guards/checkout-guard';
 
 export const routes: Routes = [
   {
@@ -38,5 +40,10 @@ export const routes: Routes = [
     path: 'perfil',
     component: PerfilComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    canActivate: [checkoutGuard],
   },
 ];
