@@ -89,15 +89,7 @@ export class AuthService {
       return false;
     }
 
-    const novoUsuario = {
-      nome: data.nome,
-      email: data.email,
-      password: data.password,
-      cep: data.cep,
-      rua: data.rua,
-    };
-
-    usuarios.push(novoUsuario);
+    usuarios.push(data);
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
     this.messageService.add({
@@ -133,5 +125,13 @@ export class AuthService {
   getUsuarios(): any[] {
     const usuarios = localStorage.getItem('usuarios');
     return usuarios ? JSON.parse(usuarios) : [];
+  }
+
+  getInfosUsuarioLogado() {
+    const usuarios = this.getUsuarios();
+    const email = localStorage.getItem('email');
+    const usuario = usuarios.find((u: any) => u.email === email);
+
+    return usuario;
   }
 }

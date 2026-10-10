@@ -11,6 +11,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   // Se não estiver autenticado, redireciona para a página de login
   if (!isAuthenticated) {
     // Redireciona para /login e mantém a URL original como parâmetro de retorno
+    router.navigate(['/login']);
     console.log('Usuário não autenticado');
     return false; // Bloqueia o acesso
   }
