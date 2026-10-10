@@ -234,7 +234,6 @@ export class HomeComponent {
   }
 
   adicionarAoCarrinho(prato: any) {
-    console.log('Prato adicionado ao carrinho:', prato);
     this.carrinhoService.adicionar(prato);
   }
 

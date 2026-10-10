@@ -72,8 +72,6 @@ export class AuthService {
   }
 
   register(data: any) {
-    console.log('Dados de registro:', data);
-
     const usuarios = localStorage.getItem('usuarios')
       ? JSON.parse(localStorage.getItem('usuarios')!)
       : [];

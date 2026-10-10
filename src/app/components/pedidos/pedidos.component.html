@@ -1,1 +1,20 @@
-<h1>Pedidos</h1>
+<div class="lista-pedidos">
+  <h2>Meus pedidos</h2>
+
+  @if (pedidoService.getPedidos().length > 0) {
+    @for (pedido of pedidoService.getPedidos(); track $index) {
+      <div class="pedido">
+        <h3>Pedido #{{ $index + 1 }}</h3>
+        <p>Status: {{ pedido.status }}</p>
+        <p>Data: {{ pedido.data | date: 'dd/MM/yyyy HH:mm' }}</p>
+        <strong>
+          Total:
+          {{ pedido.total | currency: 'BRL' }}
+        </strong>
+      </div>
+    }
+  } @else {
+    <p>Você ainda não possui pedidos.</p>
+    <app-button routerLink="/home" name="Faça seu pedido" class="btn" />
+  }
+</div>

@@ -21,16 +21,26 @@
 <div class="meus-pontos">
   <div class="saldo-pontos">
     <span>Seu saldo</span>
-    <h3>120 pontos</h3>
+    <h3>{{ pedidoService.getPontos() }} pontos</h3>
     <p>Continue comprando para ganhar mais!</p>
   </div>
 
-  <div class="recompensa">
-    <div class="recompensa-infos">
-      <h3>🥤 Bebida grátis</h3>
-      <span class="custo-pontos">50 pontos</span>
+  @for (item of recompensas; track $index) {
+    <div class="recompensa">
+      <div class="recompensa-infos">
+        <h3>{{ item.nome }}</h3>
+        <span class="custo-pontos">{{ item.pontos }}</span>
+      </div>
+
+      <hr />
+      <app-button
+        name="Resgatar recompensa"
+        (clicked)="resgatar(item)"
+        iconLeft="pi pi-star"
+        class="btn"
+        size="lg"
+        [isDisabled]="pedidoService.getPontos() >= item.pontos ? false : true"
+      />
     </div>
-    <br />
-    <app-button name="Resgatar recompensa" iconLeft="pi pi-check" class="btn" size="lg" />
-  </div>
+  }
 </div>

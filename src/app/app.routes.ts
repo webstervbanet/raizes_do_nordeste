@@ -5,7 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { authGuard } from './guards/auth-guard';
 import { loginGuard } from './guards/login-guard';
 import { PerfilComponent } from './components/perfil/perfil.component';
-import { PedidosComponent } from './components/pedidos/perfil.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { checkoutGuard } from './guards/checkout-guard';

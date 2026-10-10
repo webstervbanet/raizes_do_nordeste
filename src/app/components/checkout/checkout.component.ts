@@ -9,6 +9,7 @@ import { InputComponent } from '../../shared/input/input';
 import { MessageService } from 'primeng/api';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { LucideLock, LucideShieldKeyhole } from '@lucide/angular';
+import { PedidoService } from '../../services/pedido.service';
 
 @Component({
   selector: 'app-checkout',
@@ -31,6 +32,7 @@ export class CheckoutComponent {
   carrinhoService = inject(CarrinhoService);
   formBuilder = inject(FormBuilder);
   messageService = inject(MessageService);
+  pedidoService = inject(PedidoService);
 
   private cdr = inject(ChangeDetectorRef);
 
@@ -73,6 +75,12 @@ export class CheckoutComponent {
       return;
     }
 
+    const pedido = {
+      produtos: this.carrinhoService.produtos(),
+      total: this.carrinhoService.getTotalFinal(),
+      status: 'Concluído',
+    };
+
     this.isLoading.set(true);
 
     setTimeout(() => {
@@ -81,6 +89,7 @@ export class CheckoutComponent {
       this.carrinhoService.resetar();
       this.acompanharPedido();
     }, 3000);
+    this.pedidoService.adicionarPedido(pedido);
   }
 
   acompanharPedido() {

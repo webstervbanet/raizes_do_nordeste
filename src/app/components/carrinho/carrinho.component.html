@@ -1,4 +1,4 @@
-<h1>Carrinho</h1>
+<h2>Carrinho</h2>
 
 @if (carrinhoService.getQuantidade() > 0) {
   <p>Quantidade de itens: {{ carrinhoService.getQuantidade() }}</p>
@@ -32,5 +32,5 @@
   />
 } @else {
   <p>O carrinho está vazio.</p>
-  <app-button routerLink="/home" name="Faça seu pedido" />
+  <app-button routerLink="/home" name="Faça seu pedido" class="btn" />
 }
