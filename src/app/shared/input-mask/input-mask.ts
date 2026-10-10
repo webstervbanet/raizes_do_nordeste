@@ -27,7 +27,7 @@ export class InputMaskComponent implements ControlValueAccessor {
   @Input() readonly = false;
   @Input() required = false;
 
-  @Input() invalid = false;
+  @Input() invalid: boolean | null | undefined = null;
   @Input() errorMessage = '';
 
   @Input() size: 'small' | 'large' = 'large';

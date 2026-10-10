@@ -1,25 +1,12 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { JwtService } from './jwt.service';
 import { MessageService } from 'primeng/api';
-
-type ChangePassword = {
-  userName: string;
-  password: string;
-  passwordConfirmar: string;
-  mensagem: string;
-};
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly apiUrl = 'api/Account/LogOn';
   private router = inject(Router);
-  private http = inject(HttpClient);
-  private jwtService = inject(JwtService);
 
   private messageService = inject(MessageService);
 
@@ -65,7 +52,7 @@ export class AuthService {
       severity: 'error',
       summary: 'Erro!',
       detail: 'Usuário ou senha inválidos.',
-      life: 3000,
+      life: 5000,
     });
 
     return false;

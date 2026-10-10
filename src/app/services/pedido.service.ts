@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 })
 export class PedidoService {
   authService = inject(AuthService);
-  pontos = 10;
+  pontos = 20;
 
   adicionarPedido(pedido: any) {
     const usuario = this.authService.getInfosUsuarioLogado();

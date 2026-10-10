@@ -12,11 +12,20 @@ import { MessageService } from 'primeng/api';
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Button } from '../../shared/button/button';
+import { InputMaskComponent } from '../../shared/input-mask/input-mask';
 
 @Component({
   selector: 'app-perfil',
   standalone: true,
-  imports: [CommonModule, FormsModule, CommonModule, ReactiveFormsModule, InputComponent, Button],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    InputComponent,
+    Button,
+    InputMaskComponent,
+  ],
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css'],
 })
