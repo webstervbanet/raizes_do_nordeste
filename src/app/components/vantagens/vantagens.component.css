@@ -1,0 +1,150 @@
+h2 {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: var(--app-white);
+  font-family: 'Corinthia', cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.promocao {
+  background: linear-gradient(135deg, var(--app-md), var(--app-dark-hover));
+  color: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px var(--app-dark);
+}
+
+.pontos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 16px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.pontos h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.pontos p {
+  margin: 0;
+}
+
+.beneficios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.beneficios span {
+  background: #fff;
+  color: var(--app-dark);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.promocao small {
+  opacity: 0.9;
+}
+
+.meus-pontos {
+  margin-top: 32px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.saldo-pontos {
+  margin: 20px 0;
+  padding: 24px;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, var(--app-md), var(--app-dark-hover));
+  color: white;
+  text-align: center;
+}
+
+.saldo-pontos h3 {
+  margin: 8px 0;
+  font-size: 32px;
+}
+
+.saldo-pontos p {
+  margin-bottom: 0;
+}
+
+.recompensa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recompensa:hover {
+  background-color: var(--app-default);
+  cursor: pointer;
+}
+
+.recompensa-infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.recompensa-infos h3 {
+  margin: 0;
+  color: var(--app-dark);
+  font-weight: bold;
+}
+
+.custo-pontos {
+  white-space: nowrap;
+  color: var(--app-dark);
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  .promocao {
+    padding: 18px;
+  }
+
+  .beneficios {
+    flex-direction: column;
+  }
+
+  .pontos h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .meus-pontos {
+    padding: 16px;
+  }
+}
+
+:host ::ng-deep .btn {
+  width: 100% !important;
+  padding: 0px;
+}

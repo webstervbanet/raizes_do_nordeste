@@ -9,6 +9,7 @@ import { PedidosComponent } from './components/pedidos/perfil.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { checkoutGuard } from './guards/checkout-guard';
+import { VantagensComponent } from './components/vantagens/vantagens.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -46,5 +47,10 @@ export const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent,
     canActivate: [checkoutGuard],
+  },
+  {
+    path: 'vantagens',
+    component: VantagensComponent,
+    canActivate: [authGuard],
   },
 ];

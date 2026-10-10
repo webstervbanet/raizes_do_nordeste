@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {
   LucideCookingPot,
+  LucideGem,
   LucideHandPlatter,
   LucideListTodo,
   LucideShoppingCart,
@@ -21,6 +22,7 @@ import { AuthService } from '../../services/auth.service';
     LucideUser,
     LucideListTodo,
     LucideSquareArrowRightExit,
+    LucideGem,
     RouterLink,
     RouterLinkActive,
   ],
