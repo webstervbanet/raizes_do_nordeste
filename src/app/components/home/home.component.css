@@ -1,8 +1,11 @@
 h2 {
   text-align: center;
-  font-size: 24px;
+  font-size: 32px;
   margin-bottom: 20px;
   color: var(--app-dark);
+  font-family: 'Corinthia', cursive;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .unidade-card {
@@ -42,6 +45,15 @@ h2 {
   align-items: center;
   gap: 6px;
   margin-top: 10px;
+}
+
+.promocao {
+  background-color: var(--app-default);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .prato-card {

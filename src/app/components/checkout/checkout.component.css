@@ -35,6 +35,12 @@
   cursor: pointer;
 }
 
+.card-infos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .form {
   display: flex;
   flex-direction: column;

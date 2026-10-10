@@ -1,15 +1,9 @@
 import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { CarrinhoService } from '../../services/carrinho.service';
 import { Button } from '../../shared/button/button';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputMaskComponent } from '../../shared/input-mask/input-mask';
 import { InputComponent } from '../../shared/input/input';
 import { MessageService } from 'primeng/api';
@@ -28,6 +22,7 @@ import { LucideLock, LucideShieldKeyhole } from '@lucide/angular';
     ProgressBarModule,
     LucideLock,
     LucideShieldKeyhole,
+    RouterLink,
   ],
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],

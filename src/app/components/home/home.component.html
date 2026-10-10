@@ -16,6 +16,11 @@
       <app-button (clicked)="limparSelecao()" name="Alterar Unidade" iconLeft="pi pi-arrow-left" />
     </div>
 
+    <div class="promocao">
+      <h2>Promoção</h2>
+      <p>Em compras acima de R$ 100,00 ganhe frete grátis e 20% de desconto. Aproveite!</p>
+    </div>
+
     <h2 class="cardapio-title">Cardápio {{ unidadeSelecionada().unidade }}</h2>
 
     @for (item of unidadeSelecionada().cardapio; track $index) {

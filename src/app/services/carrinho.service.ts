@@ -53,4 +53,18 @@ export class CarrinhoService {
       0,
     );
   }
+
+  getPrecoComDesconto() {
+    const total = this.getTotal();
+
+    return total >= 100 ? total * 0.8 : total;
+  }
+
+  getFrete() {
+    return this.getTotal() >= 100 ? 0 : 10;
+  }
+
+  getTotalFinal() {
+    return this.getPrecoComDesconto() + this.getFrete();
+  }
 }

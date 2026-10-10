@@ -1,10 +1,41 @@
 @if (!pagamento()) {
   <div class="card">
     <h4>Resumo do Pedido</h4>
-    <div>Taxa de Entrega: Grátis</div>
-    <div>
-      SubTotal: <strong>{{ carrinhoService.getTotal() | currency: 'BRL' }}</strong>
+
+    <div class="card-infos">
+      Subtotal:
+      <strong>
+        {{ carrinhoService.getTotal() | currency: 'BRL' }}
+      </strong>
     </div>
+
+    <div class="card-infos">
+      Taxa de Entrega:
+      <strong>
+        @if (carrinhoService.getFrete() === 0) {
+          Grátis
+        } @else {
+          {{ carrinhoService.getFrete() | currency: 'BRL' }}
+        }
+      </strong>
+    </div>
+
+    @if (carrinhoService.getTotal() >= 100) {
+      <div class="card-infos">
+        Desconto:
+        <strong>-20%</strong>
+      </div>
+    }
+
+    <hr />
+
+    <div class="card-infos">
+      Total do Pedido:
+      <strong>
+        {{ carrinhoService.getTotalFinal() | currency: 'BRL' }}
+      </strong>
+    </div>
+
     <app-button
       name="Ir para Pagamento"
       (clicked)="selecionarPagamento()"
@@ -60,7 +91,7 @@
       />
 
       <div>
-        Total: <strong>{{ carrinhoService.getTotal() | currency: 'BRL' }}</strong>
+        Total: <strong>{{ carrinhoService.getTotalFinal() | currency: 'BRL' }}</strong>
       </div>
 
       <app-button
@@ -99,5 +130,15 @@
     <p class="status-pedido">
       Status: <strong>{{ statusPedido }}</strong>
     </p>
+
+    @if (statusPedido === 'Concluído') {
+      <app-button
+        name="Continuar Comprando"
+        routerLink="/home"
+        iconLeft="pi pi-shopping-bag"
+        class="btn mt-2"
+        size="lg"
+      />
+    }
   </div>
 }
