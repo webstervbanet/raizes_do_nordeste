@@ -1,1 +1,83 @@
 <h1>Perfil</h1>
+<form [formGroup]="form" class="login-form">
+  <app-input
+    label="Usuário"
+    type="text"
+    name="username"
+    placeholder="usuario"
+    formControlName="nome"
+    minlength="3"
+    [errorMessage]="'O nome de usuário deve ter pelo menos 3 caracteres.'"
+    [invalid]="form.get('nome')?.invalid && form.get('nome')?.touched"
+  />
+
+  <app-input
+    label="E-mail"
+    type="email"
+    name="email"
+    placeholder="exemplo@teste.com"
+    formControlName="email"
+    [invalid]="form.get('email')?.invalid && form.get('email')?.touched"
+    [errorMessage]="'Por favor, insira um email válido.'"
+  />
+
+  <div class="container-endereco">
+    <h6>Endereço</h6>
+    <app-input
+      label="CEP"
+      type="text"
+      name="cep"
+      placeholder="Digite seu CEP"
+      formControlName="cep"
+      [invalid]="form.get('cep')?.invalid && form.get('cep')?.touched"
+      [errorMessage]="'Por favor, insira um CEP válido.'"
+    />
+    <app-input
+      label="Rua"
+      type="text"
+      name="rua"
+      placeholder="Digite sua rua"
+      formControlName="rua"
+      [invalid]="form.get('rua')?.invalid && form.get('rua')?.touched"
+      [errorMessage]="'Por favor, insira uma rua válida.'"
+    />
+    <app-input
+      label="Número"
+      type="text"
+      name="numero"
+      placeholder="Digite o número"
+      formControlName="numero"
+      [invalid]="form.get('numero')?.invalid && form.get('numero')?.touched"
+      [errorMessage]="'Por favor, insira um número válido.'"
+    />
+    <app-input
+      label="Bairro"
+      type="text"
+      name="bairro"
+      placeholder="Digite o bairro"
+      formControlName="bairro"
+      [invalid]="form.get('bairro')?.invalid && form.get('bairro')?.touched"
+      [errorMessage]="'Por favor, insira um bairro válido.'"
+    />
+    <app-input
+      label="Cidade"
+      type="text"
+      name="cidade"
+      placeholder="Digite a cidade"
+      formControlName="cidade"
+      [invalid]="form.get('cidade')?.invalid && form.get('cidade')?.touched"
+      [errorMessage]="'Por favor, insira uma cidade válida.'"
+    />
+    <app-input
+      label="Estado"
+      type="text"
+      name="estado"
+      placeholder="Digite o estado"
+      formControlName="estado"
+      [invalid]="form.get('estado')?.invalid && form.get('estado')?.touched"
+      [errorMessage]="'Por favor, insira um estado válido.'"
+    />
+  </div>
+
+  <app-button name="Atualizar Perfil" iconLeft="pi pi-user-edit" class="btn" size="lg" />
+</form>
