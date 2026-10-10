@@ -61,15 +61,18 @@
 
         <div class="container-endereco">
           <h6>Endereço</h6>
-          <app-input
+          <app-input-mask
             label="CEP"
-            type="text"
+            mask="99999-999"
+            placeholder="99999-999"
+            label="CEP"
             name="cep"
             placeholder="Digite seu CEP"
             formControlName="cep"
             [invalid]="form.get('cep')?.invalid && form.get('cep')?.touched"
             [errorMessage]="'Por favor, insira um CEP válido.'"
           />
+
           <app-input
             label="Rua"
             type="text"
@@ -133,7 +136,12 @@
 
         <div>
           <p class="terms-text">
-            <app-checkbox id="aceitacao" size="large" />
+            <app-checkbox
+              id="termosAceitos"
+              size="large"
+              formControlName="termosAceitos"
+              [invalid]="form.get('termosAceitos')?.invalid && form.get('termosAceitos')?.touched"
+            />
             Ao se cadastrar você concorda com nossos <a routerLink="/termos">Termos de Uso</a> e com
             a coleta de dados conforme
             <a routerLink="/politica-privacidade">Política de Privacidade</a> e LGPD.

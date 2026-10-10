@@ -14,6 +14,7 @@ import { LucideCookingPot } from '@lucide/angular';
 import { InputComponent } from '../../shared/input/input';
 import { CheckboxComponent } from '../../shared/checkbox/checkbox';
 import { MessageService } from 'primeng/api';
+import { InputMaskComponent } from '../../shared/input-mask/input-mask';
 
 @Component({
   selector: 'app-cadastro',
@@ -26,6 +27,7 @@ import { MessageService } from 'primeng/api';
     RouterLink,
     InputComponent,
     CheckboxComponent,
+    InputMaskComponent,
   ],
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css'],
@@ -51,7 +53,8 @@ export class CadastroComponent {
       numero: ['', [Validators.required, Validators.minLength(3)]],
       bairro: ['', [Validators.required, Validators.minLength(3)]],
       cidade: ['', [Validators.required, Validators.minLength(3)]],
-      estado: ['', [Validators.required, Validators.minLength(3)]],
+      estado: ['', [Validators.required, Validators.minLength(2)]],
+      termosAceitos: [false, [Validators.requiredTrue]],
     });
   }
 

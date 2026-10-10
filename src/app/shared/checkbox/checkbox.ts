@@ -29,6 +29,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   value: boolean = false;
   @Input() disabled = false;
+  @Input() invalid: boolean | null | undefined = null;
 
   onChange = (value: boolean) => {};
   onTouched = () => {};

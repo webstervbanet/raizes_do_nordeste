@@ -10,3 +10,12 @@
 :host ::ng-deep .p-checkbox.p-highlight .p-checkbox-box .p-checkbox-icon {
   background: var(--app-dark) !important;
 }
+
+:host ::ng-deep .p-checkbox.p-invalid .p-checkbox-box {
+  border: 1px solid var(--app-error) !important;
+}
+
+:host ::ng-deep .p-checkbox.p-invalid.p-checkbox-checked .p-checkbox-box {
+  background: var(--app-error) !important;
+  border-color: var(--app-error) !important;
+}
