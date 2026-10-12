@@ -105,6 +105,8 @@
       />
 
       <small>
+        <strong> Todos seus dados estão seguros e são tratados seguindo a LGPD. </strong>
+
         <strong>
           <svg lucideLock [size]="16" [strokeWidth]="2"></svg>
           Ambiente 100% seguro.
@@ -118,6 +120,17 @@
         </strong>
         Seus dados de cartão não ficam salvos em nosso sistema.
       </small>
+
+      <p class="terms-text">
+        <app-checkbox
+          id="termosAceitos"
+          size="large"
+          formControlName="termosAceitos"
+          [invalid]="form.get('termosAceitos')?.invalid && form.get('termosAceitos')?.touched"
+        />
+        Declaro que li e concordo com o
+        <a routerLink="/termos">Termo de Aceite de Pagamento Externo. </a>
+      </p>
     </form>
   </div>
 } @else {

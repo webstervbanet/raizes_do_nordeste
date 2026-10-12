@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/api';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { LucideLock, LucideShieldKeyhole } from '@lucide/angular';
 import { PedidoService } from '../../services/pedido.service';
+import { CheckboxComponent } from '../../shared/checkbox/checkbox';
 
 @Component({
   selector: 'app-checkout',
@@ -24,6 +25,7 @@ import { PedidoService } from '../../services/pedido.service';
     LucideLock,
     LucideShieldKeyhole,
     RouterLink,
+    CheckboxComponent,
   ],
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
@@ -55,6 +57,7 @@ export class CheckoutComponent {
       numero: ['', [Validators.required]],
       validade: ['', [Validators.required]],
       cvv: ['', [Validators.required]],
+      termosAceitos: [false, [Validators.requiredTrue]],
     });
   }
 
